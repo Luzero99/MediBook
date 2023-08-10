@@ -15,8 +15,9 @@ import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import React, { useState } from 'react';
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 const pages = ['Doctors', 'Appointments'];
 const loginSettings = ['Profile', 'Logout'];
@@ -45,7 +46,7 @@ export const Navbar = () => {
 
   const settingsToRender = isLoggedIn ? loginSettings : logoutSettings;
 
-  const avatarImg = isLoggedIn ? <></> : <LockOutlinedIcon />;
+  const avatarImg = isLoggedIn ? <AccountBoxIcon /> : <LockOutlinedIcon />;
 
   return (
     <header>

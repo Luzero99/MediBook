@@ -1,5 +1,10 @@
+import { Role } from "./ExtendendJwtPayload";
+
 export interface AuthContextValues {
+  id: string | null;
+  role: Role | null;
   isLoggedIn: boolean;
-  login: () => void;
+  token: string | null;
+  login: (newToken: string) => void;
   logout: () => void;
 }

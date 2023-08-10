@@ -12,11 +12,10 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { ErrorPage } from './pages/error-page';
 import { NavbarWrapper } from './components/Navbar/NavbarWrapper';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 import { Doctors } from './pages/Doctors';
 import { Appointments } from './pages/Appointments';
 import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
-import { Logout } from '@mui/icons-material';
 import { PublicRoute } from './components/PublicRoute/PublicRoute';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
@@ -24,6 +23,10 @@ import { Profile } from './pages/Profile';
 import { ThemeProvider } from '@mui/material';
 import theme from './utils/mui-theme';
 import { ForgotPassword } from './pages/ForgotPassword';
+import { Logout } from './pages/Logout';
+import { RoleSelector } from './pages/RoleSelector';
+import { PatientProfile } from './pages/PatientProfile';
+import { DoctorProfile } from './pages/DoctorProfile';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -55,6 +58,30 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Profile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/patient-profile',
+        element: (
+          <ProtectedRoute>
+            <PatientProfile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/doctor-profile',
+        element: (
+          <ProtectedRoute>
+            <DoctorProfile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: '/role-select',
+        element: (
+          <ProtectedRoute>
+            <RoleSelector />
           </ProtectedRoute>
         ),
       },
@@ -99,13 +126,11 @@ const router = createBrowserRouter([
 ]);
 
 root.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </ThemeProvider>
-  </React.StrictMode>
+  <ThemeProvider theme={theme}>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+  </ThemeProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 import { ErrorPage } from '../../pages/error-page';
 
 export const ProtectedRoute: React.FC<{ children: ReactNode }> = ({
